@@ -11,22 +11,7 @@ import { Table } from './Table';
 })
 export class AppComponent implements OnInit {
   title = 'table-viewer';
-  // filesList = ["file.json", "file2.json", "file3.json"];
-  filesList: string[] = [];
-//   fileInfo1 = {"tables": [
-//     {
-//         "title": "table title1",
-//         "rows": 5,
-//         "columns": 2,
-//         "notes": "table nodes 1"
-//     },
-//     {
-//         "title": "table title2",
-//         "rows": 7,
-//         "columns": 8,
-//         "notes": "table nodes text"
-//     }
-// ]};
+  files: string[] = [];
   chosenFileName = "";
   chosenFile?: Table[];
   chosenTable?: Table;
@@ -35,13 +20,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
       this.loader.getFiles().subscribe(response => {
-          this.filesList = response;
+          this.files = response;
       });
   }
 
-  // tableList = ["table1", "table2"];
-
   fileClicked(file: string){
+    if(this.chosenFileName){
+      this.chosenFileName = "";
+      this.chosenTable = undefined;
+    }
     this.chosenFileName = file;
     this.loader.getFile(file).subscribe(response => {
       this.chosenFile = response;
@@ -49,6 +36,9 @@ export class AppComponent implements OnInit {
   }
 
   tableClicked(table: Table){
+    if(this.chosenTable){
+      this.chosenTable = undefined;
+    }
     this.chosenTable = table;
   }
 

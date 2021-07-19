@@ -1,16 +1,16 @@
 <h1>Table Viewer</h1>
 
-<ul *ngIf="filesList.length > 0">
-  <div *ngFor="let fileTitle of filesList">
+<ul *ngIf="files.length > 0">
+  <div *ngFor="let fileTitle of files">
       <li>
-          <div (click)="fileClicked(fileTitle)">{{fileTitle}}</div>
+          <div (click)="chosenFile = undefined; chosenTable = undefined; fileClicked(fileTitle)">{{fileTitle}}</div>
       </li>
     </div>
 </ul>
 
 <div *ngIf="chosenFile">
-  <h1>{{"File Chosen: " + chosenFileName}}</h1>
-  <h3>Tables In File:</h3>
+  <h3>{{"File Chosen: " + chosenFileName}}</h3>
+  <h4>Tables In File:</h4>
   <ul>
     <div *ngFor="let table of chosenFile">
       <li>
