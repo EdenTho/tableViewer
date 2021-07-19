@@ -1,0 +1,16 @@
+{
+    "tables": [
+        {
+            "title": "Dogs",
+            "rows": 4,
+            "columns": 23,
+            "notes": "Dog Notes"
+        },
+        {
+            "title": "Cats",
+            "rows": 2,
+            "columns": 10,
+            "notes": "Cat Notes"
+        }
+    ]
+}
